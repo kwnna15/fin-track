@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: fin-track
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fin-track
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
