@@ -1,0 +1,5 @@
+databaseChangeLog:
+
+  - preConditions:
+      - onFail: HALT
+      - onError: HALT

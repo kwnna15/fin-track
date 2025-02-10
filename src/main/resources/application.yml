@@ -9,3 +9,14 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  liquibase:
+    change-log: db/changelog/master.yaml
+    enabled: true
+
+true:
+  layer:
+    client:
+      id: sandbox-demoapp-63cf39
+    redirect:
+      uri: "http://localhost:8080/callback"
+    scope: "accounts transactions"
