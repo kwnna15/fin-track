@@ -12,6 +12,10 @@ spring:
   liquibase:
     change-log: db/changelog/master.yaml
     enabled: true
+  security:
+    user:
+      name: admin
+      password: admin
 
 true:
   layer:
