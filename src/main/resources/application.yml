@@ -21,7 +21,10 @@ true:
   layer:
     client:
       id: sandbox-demoapp-63cf39
+      secret: secret
     redirect:
       uri: "https://f278-193-180-91-234.ngrok-free.app/callback"
       page: "https://console.truelayer.com/redirect-page"
-    scope: "verification"
+    token:
+      url: "https://auth.truelayer-sandbox.com/connect/token"
+    scope: "accounts%20transactions"
