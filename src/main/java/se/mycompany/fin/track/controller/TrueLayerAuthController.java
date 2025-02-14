@@ -30,9 +30,9 @@ public class TrueLayerAuthController {
         var uri = "https://auth.truelayer-sandbox.com/?" +
                 "response_type=code" +
                 "&client_id=" + clientId +
+                "&scope=" + scope+
                 "&redirect_uri=" + redirectUri +
-                "&scope=" + scope +
-                "&providers=uk-ob-all";
+                "&providers=uk-cs-mock%20uk-ob-all%20uk-oauth-all";
         log.info(uri);
         return uri;
     }
