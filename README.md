@@ -1,0 +1,7 @@
+# Fin-Track
+
+This is an app under construction for tracking personal finances.
+
+## Authorization Flow
+
+[Swimlane](https://swimlanes.io/#fZBNT4NAEIbv+yveIyVBkN4aPxKjbYyNPUjjoeGwwrRMWHaTZaHir3dB00ZjvM4878eMY6dogVdShWkIzqA9cqOkpvaCjRBi25JFdIMl6yizsqgX2K0eshyx7FwVK3Ng/U1dRT+oeZJiudk+3+fIbEdrOXhmFBnLH9Kx0egsI2ANVxEqkiXZ2TnxJPJeheKizrEe0yB1efIh9CwnvfcS4hz0Z+VCKvXmB7eFKen6Mp0LcYJ+R6ZJgs1T/g8xea7ITWX862rSCLK7R3+D0Mb5t74QIQx3+04ptIN28h2mJ9szHfMgPvg2ZId4XEdf61kYYm8sGmMJJTnJqv0E)
