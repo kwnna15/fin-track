@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fin-track
+    username: postgres
+    password: password
+
+truelayer:
+  client-id: ${TRUELAYER_CLIENT_ID}
+  client-secret: ${TRUELAYER_CLIENT_SECRET}
+  redirect-uri: ${TRUELAYER_REDIRECT_URI}
+  token-url: "https://auth.truelayer-sandbox.com/connect/token"

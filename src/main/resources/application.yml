@@ -1,10 +1,6 @@
 spring:
   application:
     name: fin-track
-  datasource:
-    url: jdbc:postgresql://localhost:5432/fin-track
-    username: postgres
-    password: password
   jpa:
     hibernate:
       ddl-auto: update
@@ -17,14 +13,5 @@ spring:
       name: admin
       password: admin
 
-true:
-  layer:
-    client:
-      id: sandbox-demoapp-63cf39
-      secret: secret
-    redirect:
-      uri: "https://f278-193-180-91-234.ngrok-free.app/callback"
-      page: "https://console.truelayer.com/redirect-page"
-    token:
-      url: "https://auth.truelayer-sandbox.com/connect/token"
-    scope: "accounts%20transactions"
+truelayer:
+  scope: "accounts%20transactions"

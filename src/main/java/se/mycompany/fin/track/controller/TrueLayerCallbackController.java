@@ -21,15 +21,15 @@ import org.springframework.http.HttpHeaders;
 @RequestMapping("/callback")
 public class TrueLayerCallbackController {
 
-    @Value("${true.layer.client.id}")
+    @Value("${truelayer.client-id}")
     private String clientId;
-    @Value("${true.layer.client.secret}")
+    @Value("${truelayer.client-secret}")
     private String clientSecret;
-    @Value("${true.layer.token.url}")
+    @Value("${truelayer.token-url}")
     private String tokenUrl;
-    @Value("${true.layer.redirect.uri}")
+    @Value("${truelayer.redirect-uri}")
     private String redirectUri;
-    @Value("${true.layer.scope}")
+    @Value("${truelayer.scope}")
     private String scope;
 
     @GetMapping

@@ -1,7 +1,7 @@
-.PHONY: run-dependencies
-run-dependencies:
+.PHONY: start
+start:
 	docker compose -f docker/docker-compose.yml up -d
 
-.PHONY: stop-dependencies
-stop-dependencies:
+.PHONY: stop
+stop:
 	docker compose -f docker/docker-compose.yml down
