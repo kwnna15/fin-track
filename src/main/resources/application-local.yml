@@ -8,4 +8,5 @@ truelayer:
   client-id: ${TRUELAYER_CLIENT_ID}
   client-secret: ${TRUELAYER_CLIENT_SECRET}
   redirect-uri: ${TRUELAYER_REDIRECT_URI}
-  token-url: "https://auth.truelayer-sandbox.com/connect/token"
+  auth-url: "https://auth.truelayer-sandbox.com"
+  api-url: "https://api.truelayer-sandbox.com"
