@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import se.mycompany.fin.track.model.user.UserId;
+import se.mycompany.fin.track.remote.truelayer.model.TrueLayerAccountsResponse;
 import se.mycompany.fin.track.service.AccountsService;
 
 import java.util.UUID;
@@ -21,8 +22,8 @@ public class AccountsController {
     private final AccountsService accountsService;
 
     @GetMapping("/{userId}")
-    public ResponseEntity<String> getAccounts(@PathVariable UUID userId) {
-        String accounts = accountsService.getAccounts(new UserId(userId));
+    public ResponseEntity<TrueLayerAccountsResponse> getAccounts(@PathVariable UUID userId) {
+        TrueLayerAccountsResponse accounts = accountsService.getAccounts(new UserId(userId));
         return ResponseEntity.ok(accounts);
     }
 }

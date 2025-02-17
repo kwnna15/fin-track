@@ -9,6 +9,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import se.mycompany.fin.track.model.auth.AccessToken;
 import se.mycompany.fin.track.model.auth.AuthorizationCode;
+import se.mycompany.fin.track.remote.truelayer.model.TrueLayerAccountsResponse;
 
 @Slf4j
 @Service
@@ -48,13 +49,13 @@ public class TrueLayerRemoteServiceImpl implements TrueLayerRemoteService {
     }
 
     @Override
-    public String getAccounts(AccessToken accessToken) {
+    public TrueLayerAccountsResponse getAccounts(AccessToken accessToken) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(accessToken.accessToken());
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<String> response = restTemplate.exchange(trueLayerApiUrl + "/data/v1/accounts", HttpMethod.GET, entity, String.class);
+        ResponseEntity<TrueLayerAccountsResponse> response = restTemplate.exchange(trueLayerApiUrl + "/data/v1/accounts", HttpMethod.GET, entity, TrueLayerAccountsResponse.class);
         log.info("Token response: {}", response.getBody());
         return response.getBody();
     }

@@ -3,3 +3,12 @@ databaseChangeLog:
   - preConditions:
       - onFail: HALT
       - onError: HALT
+
+  - changeSet:
+      id: 1
+      author: kwnna15
+      changes:
+        - sqlFile:
+            path: db/changelog/sql/create-account-table.sql
+            relativeToChangelogFile: true
+            stripComments: true
