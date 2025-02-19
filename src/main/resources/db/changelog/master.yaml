@@ -9,6 +9,6 @@ databaseChangeLog:
       author: kwnna15
       changes:
         - sqlFile:
-            path: db/changelog/sql/create-account-table.sql
+            path: sql/create-account-table.sql
             relativeToChangelogFile: true
             stripComments: true
