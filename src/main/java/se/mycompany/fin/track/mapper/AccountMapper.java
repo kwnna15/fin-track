@@ -11,18 +11,18 @@ import se.mycompany.fin.track.repository.entity.AccountEntity;
 @Mapper(componentModel = "spring")
 public interface AccountMapper {
 
-    @Mapping(source = "provider.providerId", target = "providerId", qualifiedByName = "mapToProviderId")
+    @Mapping(source = "provider", target = "providerId", qualifiedByName = "mapToProviderId")
     Account toDomain(TrueLayerAccount remote);
 
     Account toDomain(AccountEntity entity);
 
-    @Mapping(source = "provider.providerId", target = "providerId", qualifiedByName = "mapToProviderId")
+    @Mapping(source = "provider", target = "providerId", qualifiedByName = "mapToProviderId")
     AccountEntity toEntity(TrueLayerAccount remote);
 
     AccountEntity toEntity(Account entity);
 
     @Named("mapToProviderId")
-    static String mapToProviderId(TrueLayerProvider provider) {
+    default String mapToProviderId(TrueLayerProvider provider) {
         return provider != null ? provider.providerId() : null;
     }
 }
