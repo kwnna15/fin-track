@@ -3,6 +3,7 @@ package se.mycompany.fin.track.repository.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -21,5 +22,8 @@ public class AccountEntity {
     private String displayName;
     private String currency;
     private String providerId;
+
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private Instant timestamp;
 }
