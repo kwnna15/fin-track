@@ -1,5 +1,6 @@
 package se.mycompany.fin.track.controller;
 
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -10,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import se.mycompany.fin.track.model.user.UserId;
 import se.mycompany.fin.track.remote.truelayer.model.TrueLayerAccountsResponse;
 import se.mycompany.fin.track.service.AccountsService;
-
-import java.util.UUID;
 
 @Slf4j
 @RequiredArgsConstructor

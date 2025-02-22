@@ -18,14 +18,19 @@ public class TrueLayerRemoteServiceImpl implements TrueLayerRemoteService {
 
     @Value("${truelayer.client-id}")
     private String clientId;
+
     @Value("${truelayer.client-secret}")
     private String clientSecret;
+
     @Value("${truelayer.auth-url}")
     private String trueLayerAuthUrl;
+
     @Value("${truelayer.api-url}")
     private String trueLayerApiUrl;
+
     @Value("${truelayer.redirect-uri}")
     private String redirectUri;
+
     @Value("${truelayer.scope}")
     private String scope;
 
@@ -43,7 +48,8 @@ public class TrueLayerRemoteServiceImpl implements TrueLayerRemoteService {
         requestBody.add("code", authorizationCode.code());
 
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
-        ResponseEntity<AccessToken> response = restTemplate.exchange(trueLayerAuthUrl + "/connect/token", HttpMethod.POST, requestEntity, AccessToken.class);
+        ResponseEntity<AccessToken> response = restTemplate.exchange(
+                trueLayerAuthUrl + "/connect/token", HttpMethod.POST, requestEntity, AccessToken.class);
 
         log.info("Token response: {}", response.getBody());
         return response.getBody();
@@ -56,7 +62,8 @@ public class TrueLayerRemoteServiceImpl implements TrueLayerRemoteService {
         headers.setBearerAuth(accessToken.accessToken());
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<TrueLayerAccountsResponse> response = restTemplate.exchange(trueLayerApiUrl + "/data/v1/accounts", HttpMethod.GET, entity, TrueLayerAccountsResponse.class);
+        ResponseEntity<TrueLayerAccountsResponse> response = restTemplate.exchange(
+                trueLayerApiUrl + "/data/v1/accounts", HttpMethod.GET, entity, TrueLayerAccountsResponse.class);
         log.info("Accounts response: {}", response.getBody());
         return response.getBody();
     }
@@ -68,7 +75,11 @@ public class TrueLayerRemoteServiceImpl implements TrueLayerRemoteService {
         headers.setBearerAuth(accessToken.accessToken());
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<TrueLayerTransactionsResponse> response = restTemplate.exchange(trueLayerApiUrl + "/data/v1/accounts/" + accountId + "/transactions", HttpMethod.GET, entity, TrueLayerTransactionsResponse.class);
+        ResponseEntity<TrueLayerTransactionsResponse> response = restTemplate.exchange(
+                trueLayerApiUrl + "/data/v1/accounts/" + accountId + "/transactions",
+                HttpMethod.GET,
+                entity,
+                TrueLayerTransactionsResponse.class);
         log.info("Transactions response: {}", response.getBody());
         return response.getBody();
     }

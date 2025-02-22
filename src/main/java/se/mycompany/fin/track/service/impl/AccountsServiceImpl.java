@@ -1,5 +1,6 @@
 package se.mycompany.fin.track.service.impl;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import se.mycompany.fin.track.mapper.AccountMapper;
@@ -11,8 +12,6 @@ import se.mycompany.fin.track.repository.AccountRepository;
 import se.mycompany.fin.track.repository.TokenRepository;
 import se.mycompany.fin.track.repository.entity.AccountEntity;
 import se.mycompany.fin.track.service.AccountsService;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -28,10 +27,8 @@ public class AccountsServiceImpl implements AccountsService {
         AccessToken token = tokenRepository.getToken(userId);
         TrueLayerAccountsResponse response = trueLayerRemoteService.getAccounts(token);
 
-        List<AccountEntity> accounts = response.results()
-                .stream()
-                .map(accountMapper::toEntity)
-                .toList();
+        List<AccountEntity> accounts =
+                response.results().stream().map(accountMapper::toEntity).toList();
 
         accountRepository.saveAll(accounts);
         return response;

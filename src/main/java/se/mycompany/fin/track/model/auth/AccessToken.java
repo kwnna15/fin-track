@@ -6,8 +6,8 @@ import lombok.extern.jackson.Jacksonized;
 
 @Builder
 @Jacksonized
-public record AccessToken(@JsonProperty("access_token") String accessToken,
-                          @JsonProperty("expires_in") int expiresIn,
-                          @JsonProperty("token_type") String tokenType,
-                          String scope) {
-}
+public record AccessToken(
+        @JsonProperty("access_token") String accessToken,
+        @JsonProperty("expires_in") int expiresIn,
+        @JsonProperty("token_type") String tokenType,
+        String scope) {}

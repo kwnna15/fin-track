@@ -6,5 +6,4 @@ import lombok.extern.jackson.Jacksonized;
 
 @Jacksonized
 @Builder
-public record TrueLayerProvider(@JsonProperty("provider_id") String providerId) {
-}
+public record TrueLayerProvider(@JsonProperty("provider_id") String providerId) {}

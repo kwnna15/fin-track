@@ -1,11 +1,9 @@
 package se.mycompany.fin.track.remote.truelayer.model;
 
+import java.util.List;
 import lombok.Builder;
 import lombok.extern.jackson.Jacksonized;
 
-import java.util.List;
-
 @Jacksonized
 @Builder
-public record TrueLayerTransactionsResponse(List<TrueLayerTransaction> results) {
-}
+public record TrueLayerTransactionsResponse(List<TrueLayerTransaction> results) {}

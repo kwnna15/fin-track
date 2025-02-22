@@ -19,6 +19,6 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public TrueLayerTransactionsResponse getTransactions(UserId userId, String accountId) {
         AccessToken accessToken = tokenRepository.getToken(userId);
-        return trueLayerRemoteService.getTransactions(accessToken,accountId);
+        return trueLayerRemoteService.getTransactions(accessToken, accountId);
     }
 }

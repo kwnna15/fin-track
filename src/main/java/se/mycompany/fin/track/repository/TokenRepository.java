@@ -1,10 +1,9 @@
 package se.mycompany.fin.track.repository;
 
+import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Repository;
 import se.mycompany.fin.track.model.auth.AccessToken;
 import se.mycompany.fin.track.model.user.UserId;
-
-import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 public class TokenRepository {

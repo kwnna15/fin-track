@@ -6,5 +6,5 @@ import lombok.extern.jackson.Jacksonized;
 
 @Jacksonized
 @Builder
-public record TrueLayerRunningBalance(@JsonProperty("amount") String amount, @JsonProperty("currency") String currency) {
-}
+public record TrueLayerRunningBalance(
+        @JsonProperty("amount") String amount, @JsonProperty("currency") String currency) {}

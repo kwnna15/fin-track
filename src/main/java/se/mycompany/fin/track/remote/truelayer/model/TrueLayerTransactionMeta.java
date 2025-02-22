@@ -6,6 +6,6 @@ import lombok.extern.jackson.Jacksonized;
 
 @Jacksonized
 @Builder
-public record TrueLayerTransactionMeta(@JsonProperty("bank_transaction_id") String bankTransactionId,
-                                       @JsonProperty("provider_category") String providerCategory) {
-}
+public record TrueLayerTransactionMeta(
+        @JsonProperty("bank_transaction_id") String bankTransactionId,
+        @JsonProperty("provider_category") String providerCategory) {}
