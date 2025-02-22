@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import se.mycompany.fin.track.model.auth.AccessToken;
 import se.mycompany.fin.track.model.auth.AuthorizationCode;
 import se.mycompany.fin.track.remote.truelayer.model.TrueLayerAccountsResponse;
+import se.mycompany.fin.track.remote.truelayer.model.TrueLayerTransactionsResponse;
 
 @Slf4j
 @Service
@@ -56,7 +57,19 @@ public class TrueLayerRemoteServiceImpl implements TrueLayerRemoteService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<TrueLayerAccountsResponse> response = restTemplate.exchange(trueLayerApiUrl + "/data/v1/accounts", HttpMethod.GET, entity, TrueLayerAccountsResponse.class);
-        log.info("Token response: {}", response.getBody());
+        log.info("Accounts response: {}", response.getBody());
+        return response.getBody();
+    }
+
+    @Override
+    public TrueLayerTransactionsResponse getTransactions(AccessToken accessToken, String accountId) {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(accessToken.accessToken());
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        ResponseEntity<TrueLayerTransactionsResponse> response = restTemplate.exchange(trueLayerApiUrl + "/data/v1/accounts/" + accountId + "/transactions", HttpMethod.GET, entity, TrueLayerTransactionsResponse.class);
+        log.info("Transactions response: {}", response.getBody());
         return response.getBody();
     }
 }
