@@ -15,12 +15,12 @@ import se.mycompany.fin.track.service.AccountsService;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("/api/v1/accounts")
 public class AccountsController {
 
     private final AccountsService accountsService;
 
-    @GetMapping("/{userId}")
+    @GetMapping("/user-id/{userId}")
     public ResponseEntity<TrueLayerAccountsResponse> getAccounts(@PathVariable UUID userId) {
         TrueLayerAccountsResponse accounts = accountsService.getAccounts(new UserId(userId));
         return ResponseEntity.ok(accounts);

@@ -14,7 +14,7 @@ import se.mycompany.fin.track.service.AuthorizationService;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/callback")
+@RequestMapping("/api/v1/callback")
 public class TrueLayerCallbackController {
 
     private final AuthorizationService authorizationService;

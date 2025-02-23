@@ -13,7 +13,7 @@ import se.mycompany.fin.track.service.TransactionService;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/transactions")
+@RequestMapping("/api/v1/transactions")
 public class TransactionsController {
 
     private final TransactionService transactionService;

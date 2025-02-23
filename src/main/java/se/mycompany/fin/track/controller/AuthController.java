@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/v1/auth")
 public class AuthController {
 
     @Value("${truelayer.client-id}")
@@ -23,7 +23,7 @@ public class AuthController {
     @Value("${truelayer.scope}")
     private String scope;
 
-    @GetMapping("/login")
+    @GetMapping
     public ResponseEntity<String> redirectToTrueLayer() {
         return ResponseEntity.status(HttpStatus.FOUND)
                 .header(HttpHeaders.LOCATION, getAuthUri())
