@@ -1,10 +1,9 @@
 package se.mycompany.fin.track;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import se.mycompany.fin.track.testbase.IntegrationTestBase;
 
-@SpringBootTest
-class ApplicationTests {
+class ApplicationTests extends IntegrationTestBase {
 
     @Test
     void contextLoads() {}
