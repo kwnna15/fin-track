@@ -1,13 +1,15 @@
 package se.mycompany.fin.track.model.account;
 
-import java.time.Instant;
 import lombok.Builder;
+import se.mycompany.fin.track.model.provider.ProviderId;
+
+import java.time.Instant;
 
 @Builder
 public record Account(
-        String accountId,
-        String accountType,
+        AccountId accountId,
+        AccountType accountType,
         String displayName,
         String currency,
-        String providerId,
+        ProviderId providerId,
         Instant timestamp) {}

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import se.mycompany.fin.track.model.account.AccountId;
 import se.mycompany.fin.track.model.auth.AccessToken;
 import se.mycompany.fin.track.model.auth.AuthorizationCode;
 import se.mycompany.fin.track.remote.truelayer.model.TrueLayerAccountsResponse;
@@ -69,14 +70,14 @@ public class TrueLayerRemoteServiceImpl implements TrueLayerRemoteService {
     }
 
     @Override
-    public TrueLayerTransactionsResponse getTransactions(AccessToken accessToken, String accountId) {
+    public TrueLayerTransactionsResponse getTransactions(AccessToken accessToken, AccountId accountId) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(accessToken.accessToken());
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<TrueLayerTransactionsResponse> response = restTemplate.exchange(
-                trueLayerApiUrl + "/data/v1/accounts/" + accountId + "/transactions",
+                trueLayerApiUrl + "/data/v1/accounts/" + accountId.id() + "/transactions",
                 HttpMethod.GET,
                 entity,
                 TrueLayerTransactionsResponse.class);

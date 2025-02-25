@@ -6,6 +6,7 @@ import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import se.mycompany.fin.track.model.account.AccountType;
 
 @Getter
 @Setter
@@ -17,7 +18,7 @@ public class AccountEntity {
     private UUID id;
 
     private String accountId;
-    private String accountType;
+    private AccountType accountType;
     private String displayName;
     private String currency;
     private String providerId;
