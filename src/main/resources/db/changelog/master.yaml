@@ -12,3 +12,12 @@ databaseChangeLog:
             path: sql/create-account-table.sql
             relativeToChangelogFile: true
             stripComments: true
+
+  - changeSet:
+      id: 2
+      author: kwnna15
+      changes:
+        - sqlFile:
+            path: sql/create-transaction-table.sql
+            relativeToChangelogFile: true
+            stripComments: true
