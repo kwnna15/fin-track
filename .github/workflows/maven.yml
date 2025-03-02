@@ -19,5 +19,10 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+    - name: Create .env file from GitHub Secrets
+      run: |
+        echo "TRUELAYER_CLIENT_ID=${{ secrets.TRUELAYER_CLIENT_ID }}" >> .env
+        echo "TRUELAYER_CLIENT_SECRET=${{ secrets.TRUELAYER_CLIENT_SECRET }}" >> .env
+        echo "TRUELAYER_REDIRECT_URI=${{ secrets.TRUELAYER_REDIRECT_URI }}" >> .env
     - name: Build with Maven
       run: mvn -B package --file pom.xml
