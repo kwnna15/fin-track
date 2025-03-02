@@ -1,9 +1,11 @@
 package se.mycompany.fin.track.mapper;
 
+import java.util.Currency;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import se.mycompany.fin.track.model.account.Account;
 import se.mycompany.fin.track.model.account.AccountId;
+import se.mycompany.fin.track.model.account.DisplayName;
 import se.mycompany.fin.track.model.provider.ProviderId;
 import se.mycompany.fin.track.remote.truelayer.model.TrueLayerAccount;
 import se.mycompany.fin.track.remote.truelayer.model.TrueLayerProvider;
@@ -22,16 +24,24 @@ public interface AccountMapper {
 
     AccountEntity toEntity(Account entity);
 
-    default ProviderId mapToProviderId(TrueLayerProvider provider) {
-        return provider != null ? new ProviderId(provider.providerId()) : null;
+    default AccountId mapToAccountId(String accountId) {
+        return new AccountId(accountId);
     }
 
     default ProviderId mapToProviderId(String providerId) {
         return new ProviderId(providerId);
     }
 
-    default AccountId mapToAccountId(String accountId) {
-        return new AccountId(accountId);
+    default DisplayName mapToDisplayName(String displayName) {
+        return new DisplayName(displayName);
+    }
+
+    default Currency mapToCurrency(String currency) {
+        return Currency.getInstance(currency);
+    }
+
+    default ProviderId mapToProviderId(TrueLayerProvider provider) {
+        return provider != null ? new ProviderId(provider.providerId()) : null;
     }
 
     default String mapToString(AccountId accountId) {
@@ -44,5 +54,13 @@ public interface AccountMapper {
 
     default String mapToString(TrueLayerProvider provider) {
         return provider.providerId();
+    }
+
+    default String mapToString(DisplayName displayName) {
+        return displayName.name();
+    }
+
+    default String mapToString(Currency currency) {
+        return currency.getCurrencyCode();
     }
 }
