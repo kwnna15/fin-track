@@ -1,5 +1,8 @@
 package se.mycompany.fin.track.service.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,14 +13,12 @@ import se.mycompany.fin.track.model.auth.AuthorizationCode;
 import se.mycompany.fin.track.remote.truelayer.TrueLayerRemoteService;
 import se.mycompany.fin.track.repository.TokenRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 @ExtendWith(MockitoExtension.class)
 class AuthorizationServiceImplTest {
 
     @Mock
     private TrueLayerRemoteService trueLayerRemoteService;
+
     @Mock
     private TokenRepository tokenRepository;
 
