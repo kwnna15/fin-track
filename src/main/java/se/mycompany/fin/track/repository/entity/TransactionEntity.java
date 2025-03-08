@@ -1,6 +1,7 @@
 package se.mycompany.fin.track.repository.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Set;
 import java.util.UUID;
@@ -19,7 +20,7 @@ public class TransactionEntity {
 
     private String transactionId;
     private String description;
-    private String amount;
+    private BigDecimal amount;
     private String currency;
     private String transactionType;
     private String transactionCategory;
