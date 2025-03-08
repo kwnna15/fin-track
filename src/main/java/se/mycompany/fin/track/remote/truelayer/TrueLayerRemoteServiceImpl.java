@@ -1,5 +1,6 @@
 package se.mycompany.fin.track.remote.truelayer;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -15,7 +16,10 @@ import se.mycompany.fin.track.remote.truelayer.model.TrueLayerTransactionsRespon
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class TrueLayerRemoteServiceImpl implements TrueLayerRemoteService {
+
+    private final RestTemplate restTemplate;
 
     @Value("${truelayer.client-id}")
     private String clientId;
@@ -37,7 +41,6 @@ public class TrueLayerRemoteServiceImpl implements TrueLayerRemoteService {
 
     @Override
     public AccessToken getAccessToken(AuthorizationCode authorizationCode) {
-        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
@@ -58,7 +61,6 @@ public class TrueLayerRemoteServiceImpl implements TrueLayerRemoteService {
 
     @Override
     public TrueLayerAccountsResponse getAccounts(AccessToken accessToken) {
-        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(accessToken.accessToken());
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -71,7 +73,6 @@ public class TrueLayerRemoteServiceImpl implements TrueLayerRemoteService {
 
     @Override
     public TrueLayerTransactionsResponse getTransactions(AccessToken accessToken, AccountId accountId) {
-        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(accessToken.accessToken());
         headers.setContentType(MediaType.APPLICATION_JSON);
