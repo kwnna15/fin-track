@@ -3,6 +3,7 @@ package se.mycompany.fin.track.service.impl;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import se.mycompany.fin.track.exception.AccessTokenNotFoundException;
 import se.mycompany.fin.track.mapper.TransactionMapper;
 import se.mycompany.fin.track.model.account.AccountId;
 import se.mycompany.fin.track.model.auth.AccessToken;
@@ -26,6 +27,9 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public TrueLayerTransactionsResponse getTransactions(UserId userId, AccountId accountId) {
         AccessToken accessToken = tokenRepository.getToken(userId);
+        if (accessToken == null) {
+            throw new AccessTokenNotFoundException(userId);
+        }
         TrueLayerTransactionsResponse response = trueLayerRemoteService.getTransactions(accessToken, accountId);
 
         List<TransactionEntity> transactions =

@@ -38,4 +38,16 @@ class AuthorizationServiceImplTest {
         verify(trueLayerRemoteService, times(1)).getAccessToken(eq(authorizationCode));
         verify(tokenRepository, times(1)).saveToken(any(), eq(accessToken));
     }
+
+    @Test
+    void accessTokenException() {
+        AuthorizationCode authorizationCode = new AuthorizationCode("test");
+
+        when(trueLayerRemoteService.getAccessToken(authorizationCode)).thenThrow(new RuntimeException("test"));
+
+        assertThrows(RuntimeException.class, () -> service.getAccessToken(authorizationCode));
+
+        verify(trueLayerRemoteService, times(1)).getAccessToken(eq(authorizationCode));
+        verifyNoInteractions(tokenRepository);
+    }
 }

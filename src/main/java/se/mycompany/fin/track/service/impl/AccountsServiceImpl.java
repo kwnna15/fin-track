@@ -3,6 +3,7 @@ package se.mycompany.fin.track.service.impl;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import se.mycompany.fin.track.exception.AccessTokenNotFoundException;
 import se.mycompany.fin.track.mapper.AccountMapper;
 import se.mycompany.fin.track.model.auth.AccessToken;
 import se.mycompany.fin.track.model.user.UserId;
@@ -25,6 +26,9 @@ public class AccountsServiceImpl implements AccountsService {
     @Override
     public TrueLayerAccountsResponse getAccounts(UserId userId) {
         AccessToken token = tokenRepository.getToken(userId);
+        if (token == null) {
+            throw new AccessTokenNotFoundException(userId);
+        }
         TrueLayerAccountsResponse response = trueLayerRemoteService.getAccounts(token);
 
         List<AccountEntity> accounts =
