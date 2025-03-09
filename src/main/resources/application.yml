@@ -12,6 +12,13 @@ spring:
     user:
       name: admin
       password: admin
+  kafka:
+    bootstrap-servers: kafka:9092
+    consumer:
+      group-id: fin-track-group
+      auto-offset-reset: earliest
+    producer:
+      retries: 3
 
 truelayer:
   scope: "accounts%20transactions"
