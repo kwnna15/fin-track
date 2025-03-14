@@ -2,13 +2,12 @@ package se.mycompany.fin.track.mapper;
 
 import java.math.BigDecimal;
 import java.util.Currency;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import se.mycompany.fin.track.model.money.Money;
-import se.mycompany.fin.track.model.transaction.RunningBalance;
-import se.mycompany.fin.track.model.transaction.Transaction;
-import se.mycompany.fin.track.model.transaction.TransactionId;
-import se.mycompany.fin.track.model.transaction.TransactionMeta;
+import se.mycompany.fin.track.model.transaction.*;
 import se.mycompany.fin.track.remote.truelayer.model.TrueLayerRunningBalance;
 import se.mycompany.fin.track.remote.truelayer.model.TrueLayerTransaction;
 import se.mycompany.fin.track.remote.truelayer.model.TrueLayerTransactionMeta;
@@ -95,5 +94,34 @@ public interface TransactionMapper {
 
     default BigDecimal mapToAmount(String amount) {
         return new BigDecimal(amount);
+    }
+
+    default Description mapToDescription(String description) {
+        return new Description(description);
+    }
+
+    default String mapToDescription(Description description) {
+        return description.description();
+    }
+
+    default Set<TransactionClassification> mapToTransactionClassification(Set<String> transactionClassifications) {
+        return transactionClassifications.stream()
+                .map(TransactionClassification::new)
+                .collect(Collectors.toSet());
+    }
+
+    default Set<String> mapToTransactionClassificationString(
+            Set<TransactionClassification> transactionClassifications) {
+        return transactionClassifications.stream()
+                .map(TransactionClassification::transactionClassification)
+                .collect(Collectors.toSet());
+    }
+
+    default MerchantName mapToMerchantName(String merchantName) {
+        return new MerchantName(merchantName);
+    }
+
+    default String mapToMerchantName(MerchantName merchantName) {
+        return merchantName.merchantName();
     }
 }

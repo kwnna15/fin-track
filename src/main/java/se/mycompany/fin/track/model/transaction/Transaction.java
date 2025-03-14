@@ -9,11 +9,11 @@ import se.mycompany.fin.track.model.money.Money;
 public record Transaction(
         TransactionId transactionId,
         Instant timestamp,
-        String description,
+        Description description,
         Money amount,
-        String transactionType,
-        String transactionCategory,
-        Set<String> transactionClassification,
-        String merchantName,
+        TransactionType transactionType,
+        TransactionCategory transactionCategory,
+        Set<TransactionClassification> transactionClassification,
+        MerchantName merchantName,
         RunningBalance runningBalance,
         TransactionMeta meta) {}
