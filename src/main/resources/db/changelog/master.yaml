@@ -21,3 +21,12 @@ databaseChangeLog:
             path: sql/create-transaction-table.sql
             relativeToChangelogFile: true
             stripComments: true
+
+  - changeSet:
+      id: 3
+      author: kwnna15
+      changes:
+        - sqlFile:
+            path: sql/create-classified-transaction-table.sql
+            relativeToChangelogFile: true
+            stripComments: true

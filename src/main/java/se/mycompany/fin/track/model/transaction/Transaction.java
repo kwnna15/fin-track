@@ -13,7 +13,7 @@ public record Transaction(
         Money amount,
         TransactionType transactionType,
         TransactionCategory transactionCategory,
-        Set<TransactionClassification> transactionClassification,
+        Set<TransactionClassificationValue> transactionClassification,
         MerchantName merchantName,
         RunningBalance runningBalance,
         TransactionMeta meta) {}

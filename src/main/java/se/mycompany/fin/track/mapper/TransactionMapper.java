@@ -104,16 +104,17 @@ public interface TransactionMapper {
         return description.description();
     }
 
-    default Set<TransactionClassification> mapToTransactionClassification(Set<String> transactionClassifications) {
+    default Set<TransactionClassificationValue> mapToTransactionClassificationValues(
+            Set<String> transactionClassifications) {
         return transactionClassifications.stream()
-                .map(TransactionClassification::new)
+                .map(TransactionClassificationValue::new)
                 .collect(Collectors.toSet());
     }
 
     default Set<String> mapToTransactionClassificationString(
-            Set<TransactionClassification> transactionClassifications) {
+            Set<TransactionClassificationValue> transactionClassifications) {
         return transactionClassifications.stream()
-                .map(TransactionClassification::transactionClassification)
+                .map(TransactionClassificationValue::value)
                 .collect(Collectors.toSet());
     }
 

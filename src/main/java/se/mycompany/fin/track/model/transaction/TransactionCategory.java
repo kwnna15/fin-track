@@ -9,7 +9,7 @@ public enum TransactionCategory {
     CORRECTION,
     CREDIT,
     DIRECT_DEBIT,
-    DIVIDENT,
+    DIVIDEND,
     FEE_CHARGE,
     INTEREST,
     OTHER,
