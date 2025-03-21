@@ -1,9 +1,9 @@
-package se.mycompany.fin.track.kafka.consumer;
+package se.mycompany.fin.track.kafka.transaction.topic.consumer;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
-import se.mycompany.fin.track.kafka.processor.TransactionProcessor;
+import se.mycompany.fin.track.kafka.transaction.topic.processor.TransactionProcessor;
 import se.mycompany.fin.track.model.transaction.Transaction;
 
 @Service

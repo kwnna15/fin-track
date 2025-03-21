@@ -1,4 +1,4 @@
-package se.mycompany.fin.track.kafka.processor;
+package se.mycompany.fin.track.kafka.transaction.topic.processor;
 
 import java.util.Optional;
 import java.util.UUID;

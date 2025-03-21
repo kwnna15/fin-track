@@ -18,6 +18,7 @@ public class TransactionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
+    // TODO:: add accountId
     private String transactionId;
     private String description;
     private BigDecimal amount;
