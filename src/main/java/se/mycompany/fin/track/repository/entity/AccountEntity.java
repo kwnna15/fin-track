@@ -17,8 +17,8 @@ public class AccountEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
-    // TODO:: add userId
-    private String accountId;
+    private UUID userId;
+    private String externalAccountId;
     private AccountType accountType;
     private String displayName;
     private String currency;

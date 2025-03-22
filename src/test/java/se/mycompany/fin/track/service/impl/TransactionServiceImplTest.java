@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
+import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -43,7 +44,7 @@ class TransactionServiceImplTest {
     @Test
     void success() {
         UserId userId = UserId.randomId();
-        AccountId accountId = new AccountId("123");
+        AccountId accountId = new AccountId(UUID.randomUUID());
         AccessToken accessToken = new AccessToken("test", 0, "test", "test");
         TrueLayerTransactionsResponse transactionsResponse = TrueLayerTransactionsResponse.builder()
                 .results(List.of(TrueLayerTransaction.builder().build()))
@@ -65,7 +66,7 @@ class TransactionServiceImplTest {
     @Test
     void noTokenFound() {
         UserId userId = UserId.randomId();
-        AccountId accountId = new AccountId("123");
+        AccountId accountId = new AccountId(UUID.randomUUID());
 
         when(tokenRepository.getToken(userId)).thenReturn(null);
 

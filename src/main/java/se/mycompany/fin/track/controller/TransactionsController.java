@@ -19,9 +19,9 @@ public class TransactionsController {
 
     private final TransactionService transactionService;
 
-    @GetMapping("/account-id/{accountId}/user-id/{userId}")
+    @GetMapping("/account-id/{id}/user-id/{userId}")
     public ResponseEntity<TrueLayerTransactionsResponse> getTransactions(
-            @PathVariable String accountId, @PathVariable UUID userId) {
+            @PathVariable UUID accountId, @PathVariable UUID userId) {
         TrueLayerTransactionsResponse transactionsResponse =
                 transactionService.getTransactions(new UserId(userId), new AccountId(accountId));
         return ResponseEntity.ok(transactionsResponse);

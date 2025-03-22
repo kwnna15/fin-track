@@ -31,8 +31,10 @@ public class AccountsServiceImpl implements AccountsService {
         }
         TrueLayerAccountsResponse response = trueLayerRemoteService.getAccounts(token);
 
-        List<AccountEntity> accounts =
-                response.results().stream().map(accountMapper::toEntity).toList();
+        List<AccountEntity> accounts = response.results().stream()
+                .map(accountMapper::toEntity)
+                .peek(accountEntity -> accountEntity.setUserId(userId.id()))
+                .toList();
 
         accountRepository.saveAll(accounts);
         return response;

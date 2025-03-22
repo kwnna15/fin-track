@@ -1,13 +1,10 @@
 package se.mycompany.fin.track.repository.entity;
 
 import jakarta.persistence.*;
+import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import se.mycompany.fin.track.model.account.AccountType;
-
-import java.util.List;
-import java.util.UUID;
 
 @Builder
 @Getter
@@ -18,5 +15,6 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
+
     private String name;
 }

@@ -9,7 +9,7 @@ databaseChangeLog:
       author: kwnna15
       changes:
         - sqlFile:
-            path: sql/create-account-table.sql
+            path: sql/create-user-table.sql
             relativeToChangelogFile: true
             stripComments: true
 
@@ -18,12 +18,21 @@ databaseChangeLog:
       author: kwnna15
       changes:
         - sqlFile:
-            path: sql/create-transaction-table.sql
+            path: sql/create-account-table.sql
             relativeToChangelogFile: true
             stripComments: true
 
   - changeSet:
       id: 3
+      author: kwnna15
+      changes:
+        - sqlFile:
+            path: sql/create-transaction-table.sql
+            relativeToChangelogFile: true
+            stripComments: true
+
+  - changeSet:
+      id: 4
       author: kwnna15
       changes:
         - sqlFile:

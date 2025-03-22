@@ -32,8 +32,10 @@ public class TransactionServiceImpl implements TransactionService {
         }
         TrueLayerTransactionsResponse response = trueLayerRemoteService.getTransactions(accessToken, accountId);
 
-        List<TransactionEntity> transactions =
-                response.results().stream().map(transactionMapper::toEntity).toList();
+        List<TransactionEntity> transactions = response.results().stream()
+                .map(transactionMapper::toEntity)
+                .peek(transactionEntity -> transactionEntity.setAccountID(accountId.id()))
+                .toList();
 
         transactionRepository.saveAll(transactions);
         return response;

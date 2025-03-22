@@ -1,3 +1,5 @@
 package se.mycompany.fin.track.model.account;
 
-public record AccountId(String id) {}
+import java.util.UUID;
+
+public record AccountId(UUID id) {}

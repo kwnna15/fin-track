@@ -3,9 +3,11 @@ package se.mycompany.fin.track.mapper;
 import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import se.mycompany.fin.track.model.account.AccountId;
 import se.mycompany.fin.track.model.money.Money;
 import se.mycompany.fin.track.model.transaction.*;
 import se.mycompany.fin.track.remote.truelayer.model.TrueLayerRunningBalance;
@@ -17,6 +19,7 @@ import se.mycompany.fin.track.repository.entity.TransactionEntity;
 public interface TransactionMapper {
 
     @Mapping(target = "amount", source = ".")
+    @Mapping(target = "externalTransactionId", source = "transactionId")
     Transaction toDomain(TrueLayerTransaction remote);
 
     @Mapping(target = "amount", source = ".")
@@ -28,6 +31,7 @@ public interface TransactionMapper {
     @Mapping(target = "runningBalanceCurrency", source = "runningBalance.currency")
     @Mapping(target = "metaBankTransactionId", source = "meta.bankTransactionId")
     @Mapping(target = "metaProviderCategory", source = "meta.providerCategory")
+    @Mapping(target = "externalTransactionId", source = "transactionId")
     TransactionEntity toEntity(TrueLayerTransaction remote);
 
     @Mapping(target = "amount", source = "amount.amount")
@@ -38,12 +42,8 @@ public interface TransactionMapper {
     @Mapping(target = "metaProviderCategory", source = "meta.providerCategory")
     TransactionEntity toEntity(Transaction domain);
 
-    default TransactionId mapToTransactionID(String trueLayerTransactionId) {
-        return new TransactionId(trueLayerTransactionId);
-    }
-
-    default String mapToTransactionID(TransactionId transactionId) {
-        return transactionId.id();
+    default ExternalTransactionId mapToExternalTransactionID(String transactionId) {
+        return new ExternalTransactionId(transactionId);
     }
 
     default RunningBalance mapToRunningBalance(TrueLayerRunningBalance trueLayerRunningBalance) {
@@ -88,6 +88,18 @@ public interface TransactionMapper {
                 .build();
     }
 
+    default TransactionId mapToTransactionId(UUID id) {
+        return new TransactionId(id);
+    }
+
+    default UUID mapToUUID(TransactionId id) {
+        return id.id();
+    }
+
+    default AccountId mapToAccountId(UUID id) {
+        return new AccountId(id);
+    }
+
     default String mapToCurrency(Currency currency) {
         return currency.getCurrencyCode();
     }
@@ -124,5 +136,9 @@ public interface TransactionMapper {
 
     default String mapToMerchantName(MerchantName merchantName) {
         return merchantName.merchantName();
+    }
+
+    default String mapToString(ExternalTransactionId value) {
+        return value.id();
     }
 }

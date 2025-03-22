@@ -1,6 +1,7 @@
 CREATE TABLE transaction (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    transaction_id VARCHAR(255) NOT NULL,
+    external_transaction_id VARCHAR(255) NOT NULL,
+    account_id UUID NOT NULL,
     description TEXT,
     amount NUMERIC(19, 4) NOT NULL,
     currency VARCHAR(10) NOT NULL,
@@ -12,5 +13,6 @@ CREATE TABLE transaction (
     running_balance_currency VARCHAR(10),
     meta_bank_transaction_id VARCHAR(255),
     meta_provider_category VARCHAR(255),
-    timestamp TIMESTAMP WITH TIME ZONE NOT NULL
+    timestamp TIMESTAMP WITH TIME ZONE NOT NULL,
+    CONSTRAINT fk_account FOREIGN KEY (account_id) REFERENCES "account" (id) ON DELETE CASCADE
 );

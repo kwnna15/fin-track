@@ -1,3 +1,5 @@
 package se.mycompany.fin.track.model.transaction;
 
-public record TransactionId(String id) {}
+import java.util.UUID;
+
+public record TransactionId(UUID id) {}
